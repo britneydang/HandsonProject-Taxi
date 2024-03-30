@@ -8,5 +8,6 @@ Create Synapse workspace:
 
 Datasets:
 - I have my datasets saved in many file format to serve the purpose of transformation later in the project (CSV: Taxi zone, Calendar; Delta/CSV/Parquet: Trip data; TSV: Trip type, classic JSON: Rate code; single line JSON: Payment type; quoted CSV: Vendor)
-- Upload data file 
-- 
+
+Install Azure Storage Explorer
+
