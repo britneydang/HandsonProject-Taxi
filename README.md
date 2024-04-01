@@ -126,8 +126,17 @@ Query using File Metadata function. Specify the partition as detailed as possibl
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/5a32b0ab-22c5-4d94-96b6-09172a871ca8)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/c1417023-4fb6-43db-9da6-c2b945859d08)
 
-Serverless SQL Pool - Parquet file - Columnar format
+Serverless SQL Pool - Parquet file - Columnar format: Parquet file usually give a good data type, but watch out for VARCHAR type. It is the best to specify which column inside with() clause to improve performance and save cost.
 Query single Parquet file
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e849ebbb-054e-4adc-8ea1-d69b4e09f0df)
+
+Query folders and subfolders (really similar to csv format)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9b4c0020-5d25-4c62-9204-bce5d7577b00)
+
+Query Delta file
+
+
+
 
 
 
