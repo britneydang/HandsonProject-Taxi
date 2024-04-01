@@ -83,7 +83,7 @@ OPENROWSET() function doesnt have a specific paser for JSON document, but can us
 - Standard JSON:
   FIELDTERMINATOR = 0x0b
   FIELDQUOTE = 0x0b
-  ROWTERMINATOR = 0X0B
+  ROWTERMINATOR = 0X0b
 Query payment_type.json - single line JSON and use JSON_VALUE function
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ea61a117-f0de-4eeb-946e-82170ce15e44)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d949add6-1328-410a-bf42-c989cafb35bb)
@@ -93,13 +93,27 @@ Query payment_type.json - single line JSON and use JSON_VALUE function
 Query payment_type.json - single line JSON and use OPENJSON function. Because JSON_VALUE has limitation and cant do well with array and large amount of data, but OPENJSON turn objects and properties into rows and columns.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3754d878-37aa-47aa-8a37-4dd5a84b2820)
 
-Query JSON Array
+Query JSON Array: {} {} {}
 - 1st way using JSON_VALUE(): but not deal because of having 2 separated columns.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/83eaaf6f-4419-4e4b-a2eb-757b07a723eb)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a6629d2d-57d5-4867-9b53-eac37207b570)
 
-- 2nd way using OPENJSON(): ideally to use
+- 2nd way using OPENJSON(): ideally to use for nested
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/28f36690-d195-4063-9b06-190e4c1825b3)
+
+Query Standard JSON: [{},{},{}]
+- Use OPENJSON() and ROWDETERMINATOR = '0x0b'
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/666caa06-a45b-47ce-8e17-365fad938ced)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/5b822396-5e5a-4d0a-a540-2ce682138aad)
+
+Query Multi Line JSON: [\n {} \n,{} \n,{} \n]
+- multi line JSON file is no different from the standard JSON file
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ee824bf6-f5d2-49ac-988c-6805a122c7c8)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/61a3ba8c-5935-4bbd-9b89-81bb32c9771c)
+
+
+
 
 
 
