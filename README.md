@@ -61,12 +61,38 @@ I dont want to keep the default data type.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/dfb8590d-1098-4431-ac09-aa824616a093)
 - Use External Data Source: use container name as the data source name. External data source can be created on the databases that I created, NOT on the master database.  
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ef489fc4-e3d3-413e-ac43-7bbb96e199dd)
+
 - Find location of data source
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d762131f-b9ca-4f37-833f-44c12799cec9)
+
 Query calendar.csv file
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/24cced00-3400-459f-b227-ce17b630f2f9)
+
 Query vendor.csv file: what if one cell data has a comma?. 2 ways to do: add a \ in front of that comma or add " " for the whole cell data
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/090249be-58e7-4ecd-b72e-bda1a6750a99)
+
+Query trip_type.tsv file: delimited by a tab(space)
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/557cecdf-9edb-4587-9cc7-860a2a9b111f)
+
+Serverless SQL Pool - Query JSON
+OPENROWSET() function doesnt have a specific paser for JSON document, but can use a combination of the CSV parser and few functions to query JSON files 
+- Line-delimited JSON:
+  FIELDTERMINATOR = 0x0b
+  FIELDQUOTE = 0x0b
+- Standard JSON:
+  FIELDTERMINATOR = 0x0b
+  FIELDQUOTE = 0x0b
+  ROWTERMINATOR = 0X0B
+Query payment_type.json - single line JSON and use JSON_VALUE function
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ea61a117-f0de-4eeb-946e-82170ce15e44)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d949add6-1328-410a-bf42-c989cafb35bb)
+- Add JSON_VALUE() function and specify data type for each
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/cd824f22-1280-4bde-915a-17169fb15047)
+
+
+
+
 
 
 
