@@ -90,6 +90,24 @@ Query payment_type.json - single line JSON and use JSON_VALUE function
 - Add JSON_VALUE() function and specify data type for each
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/cd824f22-1280-4bde-915a-17169fb15047)
 
+Query payment_type.json - single line JSON and use OPENJSON function. Because JSON_VALUE has limitation and cant do well with array and large amount of data, but OPENJSON turn objects and properties into rows and columns.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3754d878-37aa-47aa-8a37-4dd5a84b2820)
+
+Query JSON Array
+- 1st way using JSON_VALUE(): but not deal because of having 2 separated columns.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/83eaaf6f-4419-4e4b-a2eb-757b07a723eb)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a6629d2d-57d5-4867-9b53-eac37207b570)
+
+- 2nd way using OPENJSON(): ideally to use
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/28f36690-d195-4063-9b06-190e4c1825b3)
+
+
+
+
+
+
+
+
 
 
 
