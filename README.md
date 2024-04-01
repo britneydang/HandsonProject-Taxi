@@ -112,6 +112,29 @@ Query Multi Line JSON: [\n {} \n,{} \n,{} \n]
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ee824bf6-f5d2-49ac-988c-6805a122c7c8)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/61a3ba8c-5935-4bbd-9b89-81bb32c9771c)
 
+Serverless SQL Pool - PARTITION - Query folders and Multiple files
+- Usually transactional data (high volume) is partitioned into time based partition (yearly, monthly, daily, hourly)
+Query folders and subfolders
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/976de3d9-6b9b-4233-b604-cbc684a7426e)
+
+Query using File Metadata function. Specify the partition as detailed as possible to save cost 
+- filename()
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/00c2623a-93c7-4873-a47c-e1dd71e9ad07)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/84dfaaea-8030-4409-88ca-4f67d6c8a161)
+
+- filepath()
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/5a32b0ab-22c5-4d94-96b6-09172a871ca8)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/c1417023-4fb6-43db-9da6-c2b945859d08)
+
+Serverless SQL Pool - Parquet file - Columnar format
+Query single Parquet file
+
+
+
+
+
+
+
 
 
 
