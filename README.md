@@ -41,6 +41,27 @@ Get the server name and login info from Synapse workspace
 
 Serverless SQL Pool - Query CSV
 OPENROWSET() function: read the content of the remote data source without loading them into tables. It returns a set of rules with columns. It is used to read csv, parquet, delta, json format files.
+To learn more on OPEROWSET(), read this documentation: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-openrowset
+Synapse Studio -> Data -> ADSL2 -> taxi-data -> raw -> taxi_zone.csv
+- Extract data: 
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f730b58c-e007-4433-a443-dba9fd4111f0)
+
+- Examine data types:
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/2d85a822-ada7-44ba-82ed-56bdfa65030b)
+I dont want to keep the default data type.
+- Use WITH CLAUSE to provide explicit data types
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/97db6a6f-e107-4d9f-89d9-c5c9824a1405)
+- If character (VARCHAR) columns have an UTF8 encoded text in them by default, I have to specify that UTF 8 collation by adding COLLATE Latin1_General_100_CI_AI_SC_UTF8 behind the column (1st way)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a8beffd7-b28b-400b-9e57-b7d24373557b)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e71329be-85be-4fde-abeb-824fb6ebad9f)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f870d4f8-caad-48d8-9f0a-d1ec710888d9)
+(2nd way) is changing at database level
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/36147d8e-e9d9-45cb-a594-b9181b01ccc2)
+
+
+
+
+
 
 
 
