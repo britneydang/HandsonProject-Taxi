@@ -42,7 +42,7 @@ Get the server name and login info from Synapse workspace
 Serverless SQL Pool - Query CSV
 OPENROWSET() function: read the content of the remote data source without loading them into tables. It returns a set of rules with columns. It is used to read csv, parquet, delta, json format files.
 To learn more on OPEROWSET(), read this documentation: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-openrowset
-Synapse Studio -> Data -> ADSL2 -> taxi-data -> raw -> taxi_zone.csv
+Query taxi_zone.csv file: Synapse Studio -> Data -> ADSL2 -> taxi-data -> raw -> taxi_zone.csv
 - Extract data: 
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f730b58c-e007-4433-a443-dba9fd4111f0)
 
@@ -63,6 +63,12 @@ I dont want to keep the default data type.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ef489fc4-e3d3-413e-ac43-7bbb96e199dd)
 - Find location of data source
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d762131f-b9ca-4f37-833f-44c12799cec9)
+Query calendar.csv file
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/24cced00-3400-459f-b227-ce17b630f2f9)
+Query vendor.csv file: what if one cell data has a comma?. 2 ways to do: add a \ in front of that comma or add " " for the whole cell data
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/090249be-58e7-4ecd-b72e-bda1a6750a99)
+
+
 
 
 
