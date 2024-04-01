@@ -57,6 +57,17 @@ I dont want to keep the default data type.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f870d4f8-caad-48d8-9f0a-d1ec710888d9)
 (2nd way) is changing at database level
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/36147d8e-e9d9-45cb-a594-b9181b01ccc2)
+- Work with csv file without header and what if I want to select a few column only
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/dfb8590d-1098-4431-ac09-aa824616a093)
+- Use External Data Source: use container name as the data source name. External data source can be created on the databases that I created, NOT on the master database.  
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ef489fc4-e3d3-413e-ac43-7bbb96e199dd)
+- Find location of data source
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d762131f-b9ca-4f37-833f-44c12799cec9)
+
+
+
+
+
 
 
 
