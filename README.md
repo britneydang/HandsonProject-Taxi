@@ -28,6 +28,25 @@ In Azure Storage Explorer, ADLS Gen2/Blob container, create a new blob container
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/0b9d9514-6d30-4dea-834f-31d0abace4cc)
 
 Serverless SQL Pool
+- How to cost control: workspace studio -> Develop -> SQL scripts -> (query as in the snip) -> save and publish.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/34395413-16e3-476a-9554-038c73580c66)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/845fb79c-2458-479c-b5eb-6d4ceb50ccd0)
+
+Connect Synapse Serverless SQL Pool from Azure Data Studio (can connect to SQL SSMS alternative).
+
+Get the server name and login info from Synapse workspace
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f0fe1bda-c54e-47d8-9637-e7b14a6f5c00)
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f5211ad6-6912-4c78-8b31-54a045dd7022)
+
+Serverless SQL Pool - Query CSV
+OPENROWSET() function: read the content of the remote data source without loading them into tables. It returns a set of rules with columns. It is used to read csv, parquet, delta, json format files.
+
+
+
+
+
+
 
 
 
