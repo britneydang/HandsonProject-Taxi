@@ -139,6 +139,21 @@ Query files from Delta Lake table (Delta files)
 - Delta store the data in Parquet format. What differentiates Delta table is the transaction logs within a Delta Lake table. In the folder, there is a _delta_log folder (that keeps transaction log). The Delta Lake has to be coded from the main folder that contains _delta_log folder and data folders. One thing different in Delta file is when running the query, the furthest right of table will have the partitioned columns (in this case is column 'year' and 'month'). Cannot run without the partitioned columns. Always be specific with filter and be detail as much as possible to save time and cost.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/db348eca-7ffe-43dd-b3dd-98c461e8d504)
 
+Transforming duration
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/b67b628e-a2b2-45b2-b83d-a1b04a68cca5)
+
+Serverless SQL Pool - Data Virtualization 
+- It is a logical data layer that allows to combine data from multiple sources at query time without having to write complex ETL pipelines to load the database.
+- Create External table which I can create on the data in the data lake. As part of the external table creation, I can define things such as array of storage location, file formats, column names and data types. Once the external tables is created, it can be accessed like any tables in a relational database.
+- View in here  is similar to any relational database. 2 ways to created: (1) select data using OPENROWSET() and create a view on that selection of data. (2) create view on the data selected from the external tables. It is a combination of external table and OPENROWSET() function.
+- Serverless SQL Pool doesnt have any storage option available within it. Data always resides externally (for ex: azure data lake gen 2)
+- Create external tables on the data lake storage or blob storage. Before creating External Table, have to create 2 database objects - External Data Source and External File Format (delimited, parquet, delta - not available in production yet). User/application can use data from external table.
+- 2 types of external tables:
+    - (1) CREATE EXTERNAL TABLE on the data that already present in th storage. Not moving data anywhere, just change the metadata. No data in the files or folders will be affected byt this process.
+    - (2) CREATE EXTERNAL TABLE AS SELECT (CETAS): selected data will copied from the storage to another location in the storage. Make a table available so it can be coded. Metadata change.
+
+Create External Table (csv file)
+
 
 
 
