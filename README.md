@@ -6,8 +6,8 @@ Using dataset from Taxi Trip in New York State (website: https://www1.nyc.gov/si
 Solution architecture:
 1. Import taxi-data manually into Data Lake raw container (bronze layer)
 2. Discover data requirement on this data, use the OPENROWSET() function offered by Serverless SQL Pool. Also look at creating external tables and views to make the job of the analyst easier
-- Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
-- Data from silver layer go through transformation where I create the aggregations required to satify business requirements and output go to gold layer
+3. Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
+- Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer
 - In gold layer, create external tables/views so I can use T-SQL to query
 - Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
 - Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption.
