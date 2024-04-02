@@ -172,7 +172,14 @@ Create External Table - DELIMITED TSV file. Make sure to update external file fo
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/eab71340-7be2-4049-9044-bfa04080ad16)
 
 Create External Table - Partitioned CSV files. Because it is a large amount of data, I want to take off the reject option in external table and use file format with parser v2. 
-![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a762bc3-9374-480a-8892-b25ea6bd4fe0)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a2d44ef7-6d48-4303-939a-e67fb9d8cadd)
+
+Create External Table - Parquet file. Need to create external file format for parquet first.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9e1fa79e-ced2-4044-91fa-de5b46254fdf)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9514a803-6d51-4401-8a79-cfde8fb22014)
+
+
+ 
 
 
 
