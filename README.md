@@ -190,7 +190,8 @@ Partition Pruning:
 - it's important to prune partitions to get the optimum performance.
 - External tables in Serverless SQL Pool cannot prune partitions (not support).
 - Combination of Views and OPENROWSET() function can be used to prune partitions (Microsoft recommended)
-![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/800b9a1c-ebf4-421c-a1c2-f8bbc73b7656)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8d9221cb-9f2b-454a-8135-d30bf674d1c8)
+
 
 
 
