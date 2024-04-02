@@ -182,8 +182,11 @@ Create External Table - Delta file. Need to create external file format for Delt
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4507fbfd-7b3c-44de-ad7c-86cbd5a9d7bb)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/657906f2-ccf8-4962-b19f-beb42b7dc75d)
 
+Views: virtual tables with rows and columns. Data in a view is defined by a Select statement. 2 ways to create views: (1) use OPENROWSET() function in a Select statement. (2) create view based on top of external table. 
+Create View for JSON files. JSON file format is not supported in table, but is supported in view.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7aa2263c-f542-421d-b812-9d371a29ad86)
 
- 
+
 
 
 
