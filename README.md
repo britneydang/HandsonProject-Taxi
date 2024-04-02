@@ -186,6 +186,14 @@ Views: virtual tables with rows and columns. Data in a view is defined by a Sele
 Create View for JSON files. JSON file format is not supported in table, but is supported in view.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7aa2263c-f542-421d-b812-9d371a29ad86)
 
+Partition Pruning: 
+- it's important to prune partitions to get the optimum performance.
+- External tables in Serverless SQL Pool cannot prune partitions (not support).
+- Combination of Views and OPENROWSET() function can be used to prune partitions (Microsoft recommended)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/800b9a1c-ebf4-421c-a1c2-f8bbc73b7656)
+
+
+
 
 
 
