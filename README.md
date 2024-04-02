@@ -161,6 +161,7 @@ Create External Table (csv file) manually. NOTE: Create External Table can be ge
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e0423338-dfa0-4438-8aa2-e4728f0f4f98)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/1791c162-a663-4b7d-b2aa-1478d0030bc9)
 
+Handling rejections/errors: REJECT options inside CREATE EXTERNAL TABLE
 
 
 
