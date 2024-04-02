@@ -4,8 +4,8 @@ Prodect description: Implementing a data engineering solution using all services
 Using dataset from Taxi Trip in New York State (website: https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 Solution architecture:
-- Import taxi-data manually into Data Lake raw container (bronze layer)
-- Discover data requirement on this data, use the OPENROWSET() function offered by Serverless SQL Pool. Also look at creating external tables and views to make the job of the analyst easier
+1. Import taxi-data manually into Data Lake raw container (bronze layer)
+2. Discover data requirement on this data, use the OPENROWSET() function offered by Serverless SQL Pool. Also look at creating external tables and views to make the job of the analyst easier
 - Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
 - Data from silver layer go through transformation where I create the aggregations required to satify business requirements and output go to gold layer
 - In gold layer, create external tables/views so I can use T-SQL to query
@@ -24,6 +24,7 @@ Create Synapse workspace:
 Datasets:
 - I have my datasets saved in many file format to serve the purpose of transformation later in the project (CSV: Taxi zone, Calendar; Delta/CSV/Parquet: Trip data; TSV: Trip type, classic JSON: Rate code; single line JSON: Payment type; quoted CSV: Vendor)
 
+1. Import data:
 In Azure Storage Explorer, ADLS Gen2/Blob container, create a new blob container name "taxi-data" so I can upload the whole folder of data into.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/0b9d9514-6d30-4dea-834f-31d0abace4cc)
 
@@ -39,6 +40,7 @@ Get the server name and login info from Synapse workspace
 
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/f5211ad6-6912-4c78-8b31-54a045dd7022)
 
+2. Discover the data:
 Serverless SQL Pool - Query CSV
 OPENROWSET() function: read the content of the remote data source without loading them into tables. It returns a set of rules with columns. It is used to read csv, parquet, delta, json format files.
 To learn more on OPEROWSET(), read this documentation: https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-openrowset
@@ -133,7 +135,10 @@ Query single Parquet file
 Query folders and subfolders (really similar to csv format)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9b4c0020-5d25-4c62-9204-bce5d7577b00)
 
-Query Delta file
+Query files from Delta Lake table (Delta files)
+- Delta store the data in Parquet format. What differentiates Delta table is the transaction logs within a Delta Lake table. In the folder, there is a _delta_log folder (that keeps transaction log). The Delta Lake has to be coded from the main folder that contains _delta_log folder and data folders. One thing different in Delta file is when running the query, the furthest right of table will have the partitioned columns (in this case is column 'year' and 'month'). Cannot run without the partitioned columns. Always be specific with filter and be detail as much as possible to save time and cost.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/db348eca-7ffe-43dd-b3dd-98c461e8d504)
+
 
 
 
