@@ -192,6 +192,30 @@ Partition Pruning:
 - Combination of Views and OPENROWSET() function can be used to prune partitions (Microsoft recommended)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8d9221cb-9f2b-454a-8135-d30bf674d1c8)
 
+3. Data Ingestion in Severless SQL Pool:
+- Use CETAS to convert the delimited text file (csv) to parquet
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/905256fe-63d9-4ffc-aab1-c9d818f44d87)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/415f6c1d-f689-4db1-9ab7-28b57056ab33)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/65ac94f8-585a-470d-9bdb-4b4aed190be6)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6635a98d-5164-48ed-8841-9e9fcbf48bb9)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/cde4df42-e8d3-4c3d-9505-2a196afdf219)
+
+- Convert the JSON file to parquet. Cant create external table for JSON format, instead use OPENROWSET() or the view.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/49c12be9-1a37-4ae4-a95b-60f4a76858ad)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
