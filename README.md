@@ -201,8 +201,12 @@ Partition Pruning:
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6635a98d-5164-48ed-8841-9e9fcbf48bb9)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/cde4df42-e8d3-4c3d-9505-2a196afdf219)
 
-- Convert the JSON file to parquet. Cant create external table for JSON format, instead use OPENROWSET() or the view.
+- Transform the JSON file to parquet. Cant create external table for JSON format, instead use OPENROWSET() or the view.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/49c12be9-1a37-4ae4-a95b-60f4a76858ad)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/2a8367fc-0197-4336-b96f-2ec413252cab)
+
+- Transform the Partitioned Data (csv file) to parquet file
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a5e35078-a592-46d5-95d0-dd11f6bd95de)
 
 
 
