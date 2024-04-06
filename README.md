@@ -281,12 +281,37 @@ Stored Procedure Activity: Alternative way instead of using Script Activity (sto
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ab0d67c3-072c-47ff-abe0-b6bec39f1cc6)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/1a2daf88-d2bc-46a1-b9d4-d26b8d2f532f)
 
-Dynamic Pipeline - with Parameters and Variables
+Dynamic Pipeline - with Parameters and Variables: process one file (string variable).
 
 - Parameters available in pipelines, datasets, linked services and data flows
 - Pass external values from one component to the other
 - The value cannot be changed inside the pipeline or any other components
 - Main benefit is can resue the component by sending a different value each time it is being called.
+
+In this case, to make the whole thing dynamic, I need to add a parameter in dataset, a variable in Delete Activity and a variable in Stored Procedure Activity
+- Make the integration dataset dynamic: Data hub -> integration datasets -> select the dataset that I want to make it dynamic
+
+    - Coonection: dont want to point at a specific folder, want to add a parameter in Directory box -> add dynamic content '@dataset().p_folder_path'
+    - Schema
+    - Parameter: + -> give it a name 'p_folder_path'
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/b6881be0-c09e-4137-a43a-4b324cff2e0e)
+
+- Make the pipeline dynamic: Integrate hub -> select the pipeline that I want to make it dynamic
+    - Parameters:
+    - Variables: new -> name it 'v_folder_path' (for delete activity) and 'v_usp_name' (for stored proc activity) 
+    - Settings:
+    - Output:
+- Click on Delete Activity -> Source -> select dynamic dataset -> click in Value box, add dynamic content to select variables
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/1b6e2e28-0a2d-4a03-964f-36f272f49ebd)
+- Click on Stored Procedure Activity -> Settings -> in Stored proc name, add dynamic content to select variable
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7b2fa5ca-fa9c-441a-9bb3-5c1c7281c2a6)
+- Debug to test -> Publish
+
+Dynamic Pipeline - with Parameters and Variables: process all of files without duplicating the activities or creating a pipeline for each of the file (variable array).
+
+
+
+
 
 
 
