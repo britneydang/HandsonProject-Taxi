@@ -307,8 +307,9 @@ In this case, to make the whole thing dynamic, I need to add a parameter in data
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7b2fa5ca-fa9c-441a-9bb3-5c1c7281c2a6)
 - Debug to test -> Publish
 
-Dynamic Pipeline - with Parameters and Variables: process all of files without duplicating the activities or creating a pipeline for each of the file (variable array).
+Dynamic Pipeline - with Parameters and Variables: process all of files without duplicating the activities or creating a pipeline for each of the file (variable array - ForEach iterator).
 
+- Delete Activity and Stored Procedure Activity are inside the ForEarch Iterator.
 
 
 
