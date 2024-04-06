@@ -208,6 +208,15 @@ Partition Pruning:
 - Transform the Partitioned Data (csv file) to parquet file
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a5e35078-a592-46d5-95d0-dd11f6bd95de)
 
+- Transform all partitioned data to parquet and also write output into partitioned folders. Each folder will have its own parquet file using stored procedure. It is different method compared to the one above which transformed all partitioned data to one parquet file.
+    - stored proc - CETAS as input to transform data and stored proc - DROP external tables
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/002c9d59-babe-4b23-b290-adbf8a6300a5)
+    - EXEC stored proc for each partition
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/61b2e8aa-0b50-49fe-b260-f36b6f894db8)
+    - create a view on these transformed data so it can be queried easily (expose the partition to columns year and month so I can prune the partitions). Data is in silver folder.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a16730d-ab1d-467e-9e1d-d64dc3c71bb5)
+
+
 
 
 
