@@ -230,7 +230,9 @@ Move to schema gold (cleanest data layer - reporting data layer))
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6ef48467-d321-4ff8-ae81-78f5b096bfbd)
 
 Stored proc in gold data layer
-![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a7966639-6ae9-4811-8c22-277dcd517ada)
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/195a8559-8dcc-4c5a-853c-0e9b286a90a4)
+
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4349f689-0c06-43fc-8b90-2c13f14c8748)
 
 Create a view on gold layer to query all of these data (because external table doesnt allow to prune partition, so it is best to have a view). Analyst and BI can use data on this view.
@@ -239,7 +241,9 @@ Create a view on gold layer to query all of these data (because external table d
 Business requirements 2:
 - Demand based on borough
 - Demand based in day of the week/weekend
-- Demand based on trip type (
+- Demand based on trip type
+- Trip distance, trip duration, total fare amount per day/borough
+
 
 
 
