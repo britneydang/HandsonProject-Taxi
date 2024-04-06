@@ -264,14 +264,29 @@ For Delete Activity
 For Script Activity
 - Create Linked Service: Manage hub -> LS -> New -> select the service Azure Synapse Analytics (Dedicated SQL Pool)-> Enter manually to change end point to Serverless SQL Pool
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3d4c1f15-19c6-4616-ba99-17d695362cb9)
-- Create Pipeline: Integrate hub -> + -> Pipeline -> Connect green line -> Validate to see any validation errors -> Debug to test
+- Create Pipeline: Integrate hub -> + -> Pipeline -> Connect green line -> Validate to see any validation errors -> Debug to test -> Publish
     - General: name the activity
-    - Settings: select existing linked service or create new. Non Query. In the Script zones, add query that drop existing table and create external table
+    - Settings: select existing linked service (serverless sql pool) or create new. Non Query. In the Script zones, add query that drop existing table and create external table
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/bb4d725b-a955-42b3-a219-75420c10a07f)
     - User properties
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d9882b58-efcb-4d5d-aaa3-208eb693d1fd)
 
+Stored Procedure Activity: Alternative way instead of using Script Activity (stored procedure activity > linked service > serverless SQL Pool)
+- Develop hub -> create a stored proc script
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/57d0cefb-d445-40e1-b3bd-5dab17b50b07)
+- Integrate hub -> clone previous pipeline -> Debug to test -> Publish
+    - General: name the activity
+    - Settings: select existing linked service (serverless sql pool) or create new. Select Stored procedure name
+    - User properties
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ab0d67c3-072c-47ff-abe0-b6bec39f1cc6)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/1a2daf88-d2bc-46a1-b9d4-d26b8d2f532f)
 
+Dynamic Pipeline - with Parameters and Variables
+
+- Parameters available in pipelines, datasets, linked services and data flows
+- Pass external values from one component to the other
+- The value cannot be changed inside the pipeline or any other components
+- Main benefit is can resue the component by sending a different value each time it is being called.
 
 
 
