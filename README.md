@@ -249,11 +249,31 @@ Components to create an integration pipeline:
 
 Now I will design a pipeline to transform a csv file to parquet file: If I do manually it will involve 2 steps: delete physical file from folder in Data Hub and rerun SQL script that contain Drop table if exists + CETAS. If I create a pipeline, it will include Delete Activity (delete activity > dataset > linked service > storage account (ADLS gen2) and Script Activity (script activity > linked service > serverless SQL Pool). And finally there is a trigger.
 
+For Delete Activity
 - Create Linked Service: Manage hub -> LS -> New -> select the service Azure Storage ADLS Gen 2 -> fill in info -> create -> Publish
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8205ae77-7c40-4eba-9284-01808856e8d0)
 - Create Integration Data set -> Data hub -> + -? Integration Dataset -> select the service Azure Storage ADLS Gen 2 -> select file format -> ok -> Publish
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3d4faa33-d783-4d8e-99af-67ee040f8a12)
-- 
+- Create Pipeline: Integrate hub -> + -> Pipeline -> Debug to test
+    - General: name the activity
+    - Source: select existing dataset or create new dataset
+    - Logging settings: unable logging
+    - User properties
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/aa2a4083-dcfa-41c6-9b15-06271009c88b)
+
+For Script Activity
+- Create Linked Service: Manage hub -> LS -> New -> select the service Azure Synapse Analytics (Dedicated SQL Pool)-> Enter manually to change end point to Serverless SQL Pool
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3d4c1f15-19c6-4616-ba99-17d695362cb9)
+- Create Pipeline: Integrate hub -> + -> Pipeline -> Connect green line -> Validate to see any validation errors -> Debug to test
+    - General: name the activity
+    - Settings: select existing linked service or create new. Non Query. In the Script zones, add query that drop existing table and create external table
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/bb4d725b-a955-42b3-a219-75420c10a07f)
+    - User properties
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d9882b58-efcb-4d5d-aaa3-208eb693d1fd)
+
+
+
+
 
 
 
