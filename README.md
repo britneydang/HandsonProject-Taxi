@@ -7,10 +7,10 @@ Solution architecture:
 1. Import taxi-data manually into Data Lake raw container (bronze layer)
 2. Discover data requirement on this data, use the OPENROWSET() function offered by Serverless SQL Pool. Also look at creating external tables and views to make the job of the analyst easier
 3. Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
-4. Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer
-- In gold layer, create external tables/views so I can use T-SQL to query
-- Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
-- Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption.
+4. Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer. In gold layer, create external tables/views so I can use T-SQL to query
+5. Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption. Convert pipeline to a dynamic pipeline. 
+
+Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
 - Later I want to swap Severless SQL Pool with Spark Pool for the ingestion and transformation
 - Look at how the metadata share between Spark Pool and Serverless SQL Pool
 - Integrate the execution of Spark notesbooks withon Synapse Pipelines
@@ -238,11 +238,20 @@ Stored proc in gold data layer
 Create a view on gold layer to query all of these data (because external table doesnt allow to prune partition, so it is best to have a view). Analyst and BI can use data on this view.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e4eca038-3377-4daa-8583-805fa3296579)
 
-Business requirements 2:
-- Demand based on borough
-- Demand based in day of the week/weekend
-- Demand based on trip type
-- Trip distance, trip duration, total fare amount per day/borough
+5. Synapse Pipelines: It is a fully managed, serverless data integration and orchestration service within Synapse studio. It can orchestrate data through synapse data flows, dedicated SQL Pool scripts, serverless SQL pool scripts, synapse Spark notebooks, Azure Databricks Notebooks, Azure HDInsight scrripts, Azure Machine Learning Pipelines. Once pipelines are built, they need to be scheduled. Schedule based on clock, on tumbling window, and on events. 
+
+Components to create an integration pipeline:
+- Storage (ADLS, SQL Database)
+- Compute (Synapse Pool, Azure Databricks)
+- Linked service: is the place where specify the URL of the resource that I am trying to access and the credential that provides the access. It holds the connection information about a storage or a compute resource
+- Dataset: provide metadata about data in files or tables
+- Activity: there are many types of activity. Activities perform tasks but they are not executable. Some activities dont require a compute connection (copy, validation, etc.)
+- Pipeline: in order to execute one or more activities, need a pipeline. We dont want to run pipeline manually. Pipelines should be scheduled to run at regular intervals or when an event happens.
+- Trigger: invoke pipelines so they will run at regular intervals or when an event happens.
+
+Now I will design a pipeline to transform a csv file to parquet file: If I do manually it will involve 2 steps: delete physical file from folder in Data Hub and rerun SQL script that contain Drop table if exists + CETAS. If I create a pipeline, it will include Delete Activity (delete activity > dataset > linked service > storage account (ADLS gen2) and Script Activity (script activity > linked service > serverless SQL Pool). And finally there is a trigger.
+
+
 
 
 
