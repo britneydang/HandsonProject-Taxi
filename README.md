@@ -7,7 +7,7 @@ Solution architecture:
 1. Import taxi-data manually into Data Lake raw container (bronze layer)
 2. Discover data requirement on this data, use the OPENROWSET() function offered by Serverless SQL Pool. Also look at creating external tables and views to make the job of the analyst easier
 3. Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
-- Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer
+4. Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer
 - In gold layer, create external tables/views so I can use T-SQL to query
 - Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
 - Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption.
@@ -216,6 +216,18 @@ Partition Pruning:
     - create a view on these transformed data so it can be queried easily (expose the partition to columns year and month so I can prune the partitions). Data is in silver folder.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a16730d-ab1d-467e-9e1d-d64dc3c71bb5)
 
+4. Data Transformation in Severless SQL Pool: (gold table)
+Business requirements:
+- Trips made using credit card/cash payments
+- Payment behavior during days of the week/weekend
+- Payment behavior between boroughs
+Non-functional requirements:
+- Reporting data to be pre-aggregated for better performance
+- Pre-aggregate data for each year/month partition in isolation
+- Able to read data efficiently for specific months from aggregated data
+- Minimize the number of aggregated tables created
+
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6ef48467-d321-4ff8-ae81-78f5b096bfbd)
 
 
 
