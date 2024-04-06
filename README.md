@@ -211,13 +211,13 @@ Partition Pruning:
 - Transform all partitioned data to parquet and also write output into partitioned folders. Each folder will have its own parquet file using stored procedure. It is different method compared to the one above which transformed all partitioned data to one parquet file.
     - stored proc - CETAS as input to transform data and stored proc - DROP external tables
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/002c9d59-babe-4b23-b290-adbf8a6300a5)
-    - EXEC stored proc for each partition
+    - EXEC stored proc for each partition in silver data layer
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/61b2e8aa-0b50-49fe-b260-f36b6f894db8)
     - create a view on these transformed data so it can be queried easily (expose the partition to columns year and month so I can prune the partitions). Data is in silver folder.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a16730d-ab1d-467e-9e1d-d64dc3c71bb5)
 
 4. Data Transformation in Severless SQL Pool: (gold table)
-Business requirements:
+Business requirements 1:
 - Trips made using credit card/cash payments
 - Payment behavior during days of the week/weekend
 - Payment behavior between boroughs
@@ -226,8 +226,27 @@ Non-functional requirements:
 - Pre-aggregate data for each year/month partition in isolation
 - Able to read data efficiently for specific months from aggregated data
 - Minimize the number of aggregated tables created
-
+Move to schema gold (cleanest data layer - reporting data layer))
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6ef48467-d321-4ff8-ae81-78f5b096bfbd)
+
+Stored proc in gold data layer
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a7966639-6ae9-4811-8c22-277dcd517ada)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4349f689-0c06-43fc-8b90-2c13f14c8748)
+
+Create a view on gold layer to query all of these data (because external table doesnt allow to prune partition, so it is best to have a view). Analyst and BI can use data on this view.
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e4eca038-3377-4daa-8583-805fa3296579)
+
+Business requirements 2:
+- Demand based on borough
+- Demand based in day of the week/weekend
+- Demand based on trip type (
+
+
+
+
+
+
+
 
 
 
