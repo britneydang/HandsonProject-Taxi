@@ -233,8 +233,6 @@ Stored proc in gold data layer
 
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/195a8559-8dcc-4c5a-853c-0e9b286a90a4)
 
-![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4349f689-0c06-43fc-8b90-2c13f14c8748)
-
 Create a view on gold layer to query all of these data (because external table doesnt allow to prune partition, so it is best to have a view). Analyst and BI can use data on this view.
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e4eca038-3377-4daa-8583-805fa3296579)
 
@@ -251,6 +249,11 @@ Components to create an integration pipeline:
 
 Now I will design a pipeline to transform a csv file to parquet file: If I do manually it will involve 2 steps: delete physical file from folder in Data Hub and rerun SQL script that contain Drop table if exists + CETAS. If I create a pipeline, it will include Delete Activity (delete activity > dataset > linked service > storage account (ADLS gen2) and Script Activity (script activity > linked service > serverless SQL Pool). And finally there is a trigger.
 
+- Create Linked Service: Manage hub -> LS -> New -> select the service Azure Storage ADLS Gen 2 -> fill in info -> create -> Publish
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8205ae77-7c40-4eba-9284-01808856e8d0)
+- Create Integration Data set -> Data hub -> + -? Integration Dataset -> select the service Azure Storage ADLS Gen 2 -> select file format -> ok -> Publish
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3d4faa33-d783-4d8e-99af-67ee040f8a12)
+- 
 
 
 
