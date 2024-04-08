@@ -9,11 +9,9 @@ Solution architecture:
 3. Take data from bronze layer and process using Serverless SQL Pool to ingest into the silver layer (ingestion). Data here will have the schema, format parquet applied. Then create partitions and create external tables/views
 4. Data from silver layer go through transformation where I create the aggregations required to satisfy business requirements and output go to gold layer. In gold layer, create external tables/views so I can use T-SQL to query
 5. Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption. Convert pipeline to a dynamic pipeline. 
-
-Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
-- Later I want to swap Severless SQL Pool with Spark Pool for the ingestion and transformation
-- Look at how the metadata share between Spark Pool and Serverless SQL Pool
-- Integrate the execution of Spark notesbooks withon Synapse Pipelines
+6. Swap Severless SQL Pool with Spark Pool for the ingestion and transformation. How the metadata share between Spark Pool and Serverless SQL Pool
+7. Integrate the execution of Spark notesbooks within Synapse Pipelines
+- Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
 - Look at accessing the data created by Spark Pool using Power BI with the help of Serverless SQL Pool
 - Look at the use case for a Dedicated SQL Pool and replace the query engine for the reporting needs from Serverless SQL Pool to Dedicated SQL Pool
 - use Synapse Link in Cosmo DB container to create analytical store and then use Spark Pool as well as Serverless SQL Pool to carry the data via SYnapse Links, Hybrid Transactional and Analytical Processing (HTAP) capability.
@@ -371,6 +369,24 @@ Automated Trigger: normally use this option in production
 - Create a schedule trigger -> go to a pipleline, link the new trigger to that pipeline -> publish
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a89024a-63b2-4860-93e4-c440a2e20ca0)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3a3594f5-11fb-4669-b64a-a3aed274169b)
+
+6. Spark Pool for the ingestion and transformation:
+Spark Pools gives the ability to perform big data analytics on machine learning workloads in Azure Synapse. At the core of Spark Pool is the open source distributed compute processing engine called
+Apache Spark, which is widely used in the industry for developing big data and machine learning workloads.
+
+Create Spark Pool:
+Synapse studio -> Managee hub -> Spark Pool -> New
+Azure Portal -> Synapse workspace -> Apache Spark pools -> New
+
+- Synapse cluster requires at least 3 nodes ( 1 head node and 2 worker nodes)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8b014aa2-ebf2-439c-a66c-69ed6098d37c)
+- Create a notebook: Develop hub -> + -> notebook
+- Synapse has an internal process that replicates the metadata from this Spark Pool to the Serverless SQL Pool. This capability can take data from any data sources and process them by Spark Pool to create Spark table. The Serverless SQL Pool can read this data without any additional effort. Data can be used by T-SQL and Power BI.
+- Microsoft recommend Spark is not an optimum solution for interactive coding, use Serverless SQL Pool instead
+
+*** Metadata Replication note: (visit again)
+
+7. Integration between Spark Pool and Serverless SQL Pool
 
 
 
