@@ -336,9 +336,13 @@ Pipeline design: pipeline that transform partitioned data file (partitioned by y
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/10304358-7b00-42e9-a559-80a1454ee12d)
     - Settings: choose sequential to have it run one after the other, otherwise it will run in parallel. Batch count: run by amount of # at the same time
     - Activities: create Delete (disable logging in Logging) and Stored Proc activities (add parameter in Settings)
-![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/99d29559-14cd-486e-8ff6-a5feada162fb)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/75d6b640-0941-4604-81b9-872da907a61f)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/0778a522-48b7-480e-9f4e-04f88b905aee)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4fa12665-c8f2-4fae-a25b-29ae27bae7e2)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/82b9b3f6-5043-4943-9e2d-242364d0d5fb)
+- Create a view of top of the partitioned year and month folders using Script activity (Settings: non Query)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/deefd2fa-7deb-4358-8e99-3b5c3f817cd8)
+
 
 
 
