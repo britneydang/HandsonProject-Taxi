@@ -11,10 +11,11 @@ Solution architecture:
 5. Use Synapse Pipelines to schedule, monitor, send alerts to keep the pipeline run on regular basis without interuption. Convert pipeline to a dynamic pipeline. 
 6. Swap Severless SQL Pool with Spark Pool for the ingestion and transformation. How the metadata share between Spark Pool and Serverless SQL Pool
 7. Integrate the execution of Spark notesbooks within Synapse Pipelines
-- Use PowerBI to report from the gold layer. Power BI connect to Severless SQL Pool to query from the gold layer.
-- Look at accessing the data created by Spark Pool using Power BI with the help of Serverless SQL Pool
+8. Integration between Power BI and Synapse. Publishing to Power BI workspace. Create reports based on project requirements.
+9. Use Synapse Link in Cosmo DB container to create analytical store and then use Spark Pool as well as Serverless SQL Pool to carry the data via SYnapse Links, Hybrid Transactional and Analytical Processing (HTAP) capability.
+
 - Look at the use case for a Dedicated SQL Pool and replace the query engine for the reporting needs from Serverless SQL Pool to Dedicated SQL Pool
-- use Synapse Link in Cosmo DB container to create analytical store and then use Spark Pool as well as Serverless SQL Pool to carry the data via SYnapse Links, Hybrid Transactional and Analytical Processing (HTAP) capability.
+
 
 Create Synapse workspace:
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/752534ea-01e4-4cbc-8d2f-876fa93b01d6)
@@ -387,6 +388,19 @@ Azure Portal -> Synapse workspace -> Apache Spark pools -> New
 *** Metadata Replication note: (visit again)
 
 7. Integration between Spark Pool and Serverless SQL Pool
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/41c64b92-c87d-4314-8ecc-276545ebf3c6)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4e45b855-704d-4e90-9942-98f5d482ce49)
+
+- Add a notebook to a pipeline so it will run on a schedule: Develop hub -> notebook -> add new pipeline
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3b05d92f-5dee-4b51-8b9b-be681b70dcf6)
+
+8. Power BI Integration within Synapse (reporting). Need to download Power BI Desktop/Workspace
+Power BI Desktop: connect to Serverlss SQL Pool
+- Get data -> Azure -> Azure Synapse Analytics SQL -> Connect -> input server (built-in serverless sql workspace SQL endpoint URL) -> DirectQuery -> Create charts in Power BI
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ad37f1f5-e1ea-4ff6-9d83-8977e0dc36e9)
+- Create Power BI Workspace and publish the report (unable to get into Workspace)
+- For integration: Need to create a linked service to connect PowerBI Workspace to Synapse -> Publish. Develop hub -> Power BI, will able to view all of reports saved in Workspace
+9. Synapse Link
 
 
 
