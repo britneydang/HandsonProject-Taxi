@@ -324,6 +324,25 @@ Dynamic Pipeline - with Parameters and Variables: process all of files without d
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9d4935a3-6f1f-4527-8621-0f5457247ce2)
 - Whenever I have a new table, I only need to come to pipeline -> ForEach Activity -> settings -> update the variable to include new folder path and new table name.
 
+Pipeline design: pipeline that transform partitioned data file (partitioned by year and month). Use the script Activity, run SQL against the views in the bronze layer to get month and year from the raw data. Once we get the list of pertition year and month, need to iterate over the list and process the data (ForEach). Use the delete activity to delete the corresponding data in the silver data if it is already existed and then execute the stored procedure to render. Make sure that the partitioned year and month are passed in these activities so that they process right data. Finally, create a view on silver layer using script activity.
+- create new pipeline -> create Script activity -> Debug 
+    - General: name
+    - Settings: select linked service. Script -> Query -> manually add query
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8f0d7481-6030-46fd-948d-62f87452b1bb)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/a56468d4-f4df-4b9c-8343-80990b499ce4)
+- Read the Output message which is JSON file, I will have to access the resultSets and go into the rows. Iterate over there and call the 2 delete and stored proc activities
+- Add ForEach activity: Items -> Add dynamic content
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/d8356f41-3a2a-4bb5-9c5f-8df8743cc91f)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/10304358-7b00-42e9-a559-80a1454ee12d)
+    - Settings: choose sequential to have it run one after the other, otherwise it will run in parallel. Batch count: run by amount of # at the same time
+    - Activities: create Delete (disable logging in Logging) and Stored Proc activities (add parameter in Settings)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/99d29559-14cd-486e-8ff6-a5feada162fb)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/0778a522-48b7-480e-9f4e-04f88b905aee)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4fa12665-c8f2-4fae-a25b-29ae27bae7e2)
+
+
+
+
 
 
 
