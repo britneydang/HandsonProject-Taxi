@@ -324,7 +324,7 @@ Dynamic Pipeline - with Parameters and Variables: process all of files without d
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9d4935a3-6f1f-4527-8621-0f5457247ce2)
 - Whenever I have a new table, I only need to come to pipeline -> ForEach Activity -> settings -> update the variable to include new folder path and new table name.
 
-Pipeline design: pipeline that transform partitioned data file (partitioned by year and month). Use the script Activity, run SQL against the views in the bronze layer to get month and year from the raw data. Once we get the list of pertition year and month, need to iterate over the list and process the data (ForEach). Use the delete activity to delete the corresponding data in the silver data if it is already existed and then execute the stored procedure to render. Make sure that the partitioned year and month are passed in these activities so that they process right data. Finally, create a view on silver layer using script activity.
+Pipeline design (for silver layer): pipeline that transform partitioned data file (partitioned by year and month). Use the script Activity, run SQL against the views in the bronze layer to get month and year from the raw data. Once we get the list of pertition year and month, need to iterate over the list and process the data (ForEach). Use the delete activity to delete the corresponding data in the silver data if it is already existed and then execute the stored procedure to render. Make sure that the partitioned year and month are passed in these activities so that they process right data. Finally, create a view on silver layer using script activity.
 - create new pipeline -> create Script activity -> Debug 
     - General: name
     - Settings: select linked service. Script -> Query -> manually add query
@@ -342,6 +342,19 @@ Pipeline design: pipeline that transform partitioned data file (partitioned by y
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/82b9b3f6-5043-4943-9e2d-242364d0d5fb)
 - Create a view of top of the partitioned year and month folders using Script activity (Settings: non Query)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/deefd2fa-7deb-4358-8e99-3b5c3f817cd8)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/329c85fa-d111-42c6-a761-deaaaa09884a)
+
+Pipeline design (for gold layer): pipeline that transform partitioned data file (partitioned by year and month)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/14af9264-c600-4e64-a2c5-ebd41ca9f480)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/329494ea-92fd-41b2-86fe-125859d8e667)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/033bb86a-124e-4562-9491-422b6fca8803)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/74dee258-e480-47b9-b7eb-cc4ff71fd22f)
+
+
+
+
+
+
 
 
 
