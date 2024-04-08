@@ -350,6 +350,29 @@ Pipeline design (for gold layer): pipeline that transform partitioned data file 
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/033bb86a-124e-4562-9491-422b6fca8803)
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/74dee258-e480-47b9-b7eb-cc4ff71fd22f)
 
+Pipeline Dependencies: 
+- Create a master pipeline that will execute all of pipelines in an order.
+- Add Execute Pipeline Activity 1 -> Add Execute Pipeline Activity 2 -> Add Execute Pipeline Activity 3 which is dependent on the other 2 completion. (1) and (2) are running at the same time
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/190b3ac5-76e4-4873-a024-c076eeaf15e1)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/c05fa120-b108-4c0c-9edc-f08cac1dbe80)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/1b2e1bb2-b33b-4bef-b22b-29b21c311b7e)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7b580bfc-c5a8-4282-8344-b05ee281dfee)
+
+Manual Trigger: 
+- Go to a pipeline -> add trigger -> trigger now -> this is a on demand run -> ok.
+- To check on Trigger run, go to Monitor hub -> Trigger runs to view all triggers info
+Automated Trigger: normally use this option in production
+- Option 1: Go to a pipeline -> add trigger -> New/Edit
+- Option 2: Manage hub -> New trigger: Types
+    - Schedule: Run wall clock. Can select frequency
+    - Tumbling Window: Run on an interval. Specify start date and end date. No overlap allows. Allows to create dependencies. ex: run every 6 hours
+    - Storage Events: Work on Azure storage. Based on blob/containers is being created or deleted
+    - Custom Events: based on events
+- Create a schedule trigger -> go to a pipleline, link the new trigger to that pipeline -> publish
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4a89024a-63b2-4860-93e4-c440a2e20ca0)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/3a3594f5-11fb-4669-b64a-a3aed274169b)
+
+
 
 
 
