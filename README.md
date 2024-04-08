@@ -310,6 +310,21 @@ In this case, to make the whole thing dynamic, I need to add a parameter in data
 Dynamic Pipeline - with Parameters and Variables: process all of files without duplicating the activities or creating a pipeline for each of the file (variable array - ForEach iterator).
 
 - Delete Activity and Stored Procedure Activity are inside the ForEarch Iterator.
+- Create the variable with the type = array and assign it with the value = list of the parts
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8c72cca0-f2ba-4ff7-b320-0baefe3c62a3)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/514ced30-2ccb-4af8-946e-60a68176ff48)
+- Add ForEach activity:
+    - General: add name
+    - Setting: items -> add dynamic content -> select the variable type array
+    - Activities: add activities -> cut and paste the 2 delete and stored proc activities into. Update Source in delete activity -> select ForEach Iterator. Update Settings in stored proc activity -> select ForEach Iterator
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/af6eb28f-4107-4b37-8959-8bcbbb7a3878)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/51133de9-063d-4ea8-9b95-25449f8dd9fc)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e0660d49-e959-45d3-b457-f4f28dad2400)
+- Before running the pipeline, make sure that there are stored procedures created for all files -> Debug -> Publish
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9d4935a3-6f1f-4527-8621-0f5457247ce2)
+- Whenever I have a new table, I only need to come to pipeline -> ForEach Activity -> settings -> update the variable to include new folder path and new table name.
+
+
 
 
 
