@@ -13,8 +13,7 @@ Solution architecture:
 7. Integrate the execution of Spark notesbooks within Synapse Pipelines
 8. Integration between Power BI and Synapse. Publishing to Power BI workspace. Create reports based on project requirements.
 9. Use Synapse Link in Cosmo DB container to create analytical store and then use Spark Pool as well as Serverless SQL Pool to carry the data via SYnapse Links, Hybrid Transactional and Analytical Processing (HTAP) capability.
-
-- Look at the use case for a Dedicated SQL Pool and replace the query engine for the reporting needs from Serverless SQL Pool to Dedicated SQL Pool
+10. Look at the use case for a Dedicated SQL Pool and replace the query engine for the reporting needs from Serverless SQL Pool to Dedicated SQL Pool
 
 
 Create Synapse workspace:
@@ -400,7 +399,51 @@ Power BI Desktop: connect to Serverlss SQL Pool
 ![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/ad37f1f5-e1ea-4ff6-9d83-8977e0dc36e9)
 - Create Power BI Workspace and publish the report (unable to get into Workspace)
 - For integration: Need to create a linked service to connect PowerBI Workspace to Synapse -> Publish. Develop hub -> Power BI, will able to view all of reports saved in Workspace
-9. Synapse Link
+  
+9. Synapse Link : is a cloud native hybrid, transactional and analytical processing capability that enables businesses to run near real time analytics all their operational data without impacting the performance of the transactional systems. Synapse Link is available for Azure Cosmo DB Database, Dataverse, and SQL Server 2022
+Synapse Link for Cosmo DB is a replicattion from transactional store (row ) to the analytical store (column)
+- Create Cosmo DB database with a container to receive the data from the devices
+- Enable Synapse Link so that the analytical sotre is created and the data from the transactional store is replicate in the analytical store.
+- Create a link service in Synapse to connect to Cosmo DB database. Then enable access this data from Spark Pool and Serverless SQL Pool
+
+- Create Azure Cosmo DB account: Azure portal -> Create a resource -> Azure Cosmo DB -> Create -> Azure Cosmos DB for NoSQL
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/38717547-b962-4678-b695-35417d6b66a1)
+- After got the cosmo DB created, enable Azure Synapse Link
+- Create database and container: Data explorer -> New container -> New database. Then create container on newly created db
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/dea4f7c6-f138-4964-95e6-30065dcec7a3)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/e17353c1-f90b-4912-af69-b9490707ab10)
+- Add data: Items in container -> New Item -> paste 1 record from json data file -> save
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/8d03575c-1153-44bb-9147-d30a4e3bc919)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/554f4e20-6ec9-4160-b076-ee5351fbf6d5)
+- create a linked service within Synapse studio and connect to the data in Cosmo DB analytical store: Manage hub -> Linked Service -> Cosmo NOSQL -> create
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6f01ac98-1900-4a7f-a8c6-2104929bb307)
+- Data hub -> Linked -> can see the Azure Cosmo DB now -> select 100 rows -> edit query and add keys for SECRET which is from portal
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/9a36a1e0-0d27-4a21-822a-0a96aff16070)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/c8f88970-8aac-474c-8eaa-7e639f4aa7df)
+With the use of Synapse Link, I didnt have to do the ETL to bring data from Cosmo DB into Data Lake
+- From the Cosmo DB table, it can be open in new notebook which is using Spark Pool. It can load to data frame and write dataframe to container (Spark pool has ability to write the data back into Azure Cosmo DB container)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/637e071b-a3f4-49a6-8bb7-43741df126a4)
+
+10. Dedicated SQL Pool: formerly SQL SQL data warehouse - is a distributed query engine that can be used to perform high performance big data analytics unsing T-SQL. offers a data storage solution that stores
+data in a tabular structure with column in a format. The key difference between Serverless SQL Pool and the Dedicated SQL Pool, is that the dedicated SQL pool comes with an internal storage. The storage is split into 60 distributions to enable parallel processing. Each computing part is assigned equal number of distributions.
+- Create Dedicated SQL Pool: Manage Hub -> SQL Pool -> New -> Note: Dedicated SQL Pool charge while it is online
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/4f2b9646-c27d-4ac8-8f65-f8df695fc4a6)
+Use Polybase method to load to Dedicated SQL Pool
+- create external table to read the data from gold layer
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/6fc39c8a-9115-4d6c-85f4-9f7125b5b424)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/c4366588-2bf3-4772-b515-04873c85ce1e)
+- create a physical table (internal table) within database and copy data from external table into the physical table (using CETAS)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/68e34086-e3bb-4ede-8633-c46d59153fcb)
+Use COPY command to load to Dedicated SQL Pool: more simple. Dont have to create external data source, external file format 
+- Data hub -> select data folder -> Bulk Load -> choose snappy
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/888071c2-a547-4ce6-9afe-2466c97b1927)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/7eae15d6-6241-4681-88af-ccf023246489)
+
+- Connect Dedicated SQL pool to Azure studio: get the workspace SQL endpoint URL (manage hub -> click on dwh -> properties)
+![image](https://github.com/britneydang/HandsonProject-Taxi/assets/110323703/895a6c3b-8ba9-4275-bc21-c4ead3ec7f5c)
+
+
+
 
 
 
